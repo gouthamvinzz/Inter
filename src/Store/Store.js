@@ -1,14 +1,8 @@
 import Reducer from './../Reducer/Reducer';
-import {combineReducers , createStore} from 'redux';
-
-// const AppReducer = combineReducers({
-//     Reducer
-// })
-
-// const rootReducer = (state,action)=>{
-//     return AppReducer(state,action);
-// }
-
-const Store = createStore(Reducer);
+import { createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import { logger } from 'redux-logger'; 
+const Store = createStore(Reducer,
+    applyMiddleware(thunk,logger));
 
 export default Store;
